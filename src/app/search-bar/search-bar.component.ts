@@ -18,7 +18,6 @@ export class SearchBarComponent implements OnInit {
   public search() {
     console.log(this.term);
     this.termChanged.emit(this.term);
-    console.log('Test');
     this.term = '';
   }
 }
