@@ -12,4 +12,8 @@ export class SearchPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  public onTermChanged(term: string) {
+    console.log('Evenet recieved' + term);
+  }
+
 }
