@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { SearchPageComponent } from './search-page/search-page.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
+import { StockListComponent } from './stock-list/stock-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    StockListComponent
   ],
   imports: [
     BrowserModule,

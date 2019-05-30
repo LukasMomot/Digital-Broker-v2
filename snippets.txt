@@ -1,0 +1,25 @@
+=========
+List of symbols:
+BMW.DE
+LHA.DE
+APC.DE => Apple
+=========
+// Static list of stocks
+    this.stocks = [
+      {
+        name: 'BMW',
+        price: 67.23,
+        symbol: 'BMW.DE'
+      },
+      {
+        name: 'Lufthansa',
+        price: 20.43,
+        symbol: 'LHA.DE'
+      },
+      {
+        name: 'Apple Inc.',
+        price: 180.34,
+        symbol: 'LHA.DE'
+      },
+    ];
+  }
