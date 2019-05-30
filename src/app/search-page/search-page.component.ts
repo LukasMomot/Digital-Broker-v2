@@ -1,5 +1,7 @@
+import { StocksService } from '../shared/stocks.service';
 import { Component, OnInit } from '@angular/core';
 import { Stock } from '../shared/models/stock';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'search-page',
@@ -9,26 +11,14 @@ import { Stock } from '../shared/models/stock';
 export class SearchPageComponent implements OnInit {
 
   public stocks: Stock[];
-  constructor() { }
+  constructor(private readonly stocksService: StocksService) { }
 
   ngOnInit() {
-    this.stocks = [
-      {
-        name: 'BMW',
-        price: 67.23,
-        symbol: 'BMW.DE'
-      },
-      {
-        name: 'Lufthansa',
-        price: 20.43,
-        symbol: 'LHA.DE'
-      },
-      {
-        name: 'Apple Inc.',
-        price: 180.34,
-        symbol: 'LHA.DE'
-      },
-    ];
+    this.stocksService.getMostTraded()
+                    .pipe(first())
+                    .subscribe(stocks => {
+                      this.stocks = stocks;
+                    });
   }
 
   public onTermChanged(term: string) {
