@@ -1,3 +1,4 @@
+import { first } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StocksService } from '../shared/stocks.service';
@@ -33,8 +34,9 @@ export class BuyAndSellFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO: dispoese
-    this.stocksService.getStock(this.model.symbol).subscribe((stock) => {
+    this.stocksService.getStock(this.model.symbol)
+    .pipe(first())
+    .subscribe((stock) => {
       this.model.currentPrice = stock.price;
       this.model.name = stock.name;
       this.model.limitOrder = +(stock.price * 1.02).toFixed(2);
@@ -42,8 +44,8 @@ export class BuyAndSellFormComponent implements OnInit {
   }
 
   public submit(form: NgForm) {
+    console.log(`Thank you for buying ${this.model.amount} ${this.model.symbol} stocks`);
     console.log(form);
-    console.log(this.model);
     this.router.navigate(['/search-page']);
   }
 
