@@ -1,0 +1,25 @@
+<h2>
+  Buy stocks
+</h2>
+
+<form #form="ngForm" class="form-horizontal" (ngSubmit)="submit(form)" novalidate>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" name="name" [value]="model.name" disabled>
+  </div>
+  <div class="form-group">
+    <label for="currentprice">Current Price</label>
+    <input type="text" class="form-control" name="currentPrice" [value]="model.currentPrice" disabled>
+  </div>
+  <div class="form-group">
+    <label for="limitOrder">Limit Price</label>
+    <input type="text" class="form-control" name="limitOrder" [(ngModel)]="model.limitOrder">
+  </div>
+  <div class="form-group">
+    <label for="amount">Amount</label>
+    <input type="number" min="1" step="1" class="form-control" name="amount" required [(ngModel)]="model.amount">
+  </div>
+
+  <button type="submit" class="btn btn-success btn-buy" [disabled]="form.invalid">Buy</button>
+  <button type="submit" class="btn btn-danger" (click)="cancel()">Cancel</button>
+</form>

@@ -8,13 +8,15 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FormsModule } from '@angular/forms';
 import { StockListComponent } from './stock-list/stock-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BuyAndSellFormComponent } from './buy-and-sell-form/buy-and-sell-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchPageComponent,
     SearchBarComponent,
-    StockListComponent
+    StockListComponent,
+    BuyAndSellFormComponent
   ],
   imports: [
     BrowserModule,
