@@ -23,3 +23,42 @@ APC.DE => Apple
       },
     ];
   }
+====
+RXJS for SearchPage
+
+import { StocksService } from '../shared/stocks.service';
+import { Component, OnInit } from '@angular/core';
+import { Stock } from '../shared/models/stock';
+import { mergeMap, map, startWith, withLatestFrom } from 'rxjs/operators';
+import { Observable, concat, Subject, combineLatest } from 'rxjs';
+
+@Component({
+  selector: 'search-page',
+  templateUrl: './search-page.component.html',
+  styleUrls: ['./search-page.component.scss']
+})
+export class SearchPageComponent implements OnInit {
+
+  public stocks: Observable<Stock[]>;
+  public termChanged$: Subject<string> = new Subject<string>();
+  constructor(private readonly stocksService: StocksService) { }
+
+  ngOnInit() {
+
+    const mostTraed$ = this.stocksService.getMostTraded();
+    const addStock$ = this.termChanged$.pipe(
+      mergeMap(symbol => this.stocksService.getStock(symbol)),
+      withLatestFrom(mostTraed$, (stock, mostTradedStocks) => [...mostTradedStocks, stock]),
+    );
+
+    this.stocks = concat(this.stocksService.getMostTraded(), addStock$);
+  }
+
+  public addStock(symbol: string) {
+    console.log('Evenet recieved' + symbol);
+    // this.stocksService.getStock(symbol)
+    //                   .pipe(first())
+    //                   .subscribe((data) => this.stocks = [...this.stocks, data]);
+  }
+
+}
