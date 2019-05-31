@@ -10,7 +10,7 @@ import { Stock } from './models/stock';
 })
 export class StocksService {
 
-  private url = environment.production === true ? 'stocks' : 'http://localhost:5001';
+  private url = 'http://localhost:5001';
 
   constructor(private httpClient: HttpClient) { }
 
