@@ -21,8 +21,11 @@ export class SearchPageComponent implements OnInit {
                     });
   }
 
-  public onTermChanged(term: string) {
-    console.log('Evenet recieved' + term);
+  public addStock(symbol: string) {
+    console.log('Evenet recieved' + symbol);
+    this.stocksService.getStock(symbol)
+                      .pipe(first())
+                      .subscribe((data) => this.stocks = [...this.stocks, data]);
   }
 
 }
