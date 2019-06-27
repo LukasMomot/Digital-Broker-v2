@@ -9,7 +9,7 @@ COPY ./package.json ./
 RUN npm install
 RUN npm install @angular/cli -g
 COPY . .
-RUN ng build --prod=true
+RUN ng build --prod
 
 FROM nginx:latest
 EXPOSE 3000
