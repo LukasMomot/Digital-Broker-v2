@@ -1,0 +1,18 @@
+version: '3'
+services:
+  web:
+    build:
+      context: ./Digital-Broker
+      dockerfile: Dockerfile.dev
+    container_name: web_dev
+    ports:
+      - "4002:4200"
+    volumes:
+      - /app/node_modules
+      - ./Digital-Broker:/app
+  stocks:
+    build: ./StockWatcher
+    container_name: backend_dev
+    ports: 
+      - "5001:5001"
+    
