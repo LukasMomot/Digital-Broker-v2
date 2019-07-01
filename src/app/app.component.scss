@@ -1,4 +1,8 @@
-h1 {
+.title {
+    margin-top: 10px;
+    margin-bottom: 20px;
     font-weight: bold;
-    margin: 10px;
+}
+div {
+    .row { margin: 0; padding: 0 }
 }
