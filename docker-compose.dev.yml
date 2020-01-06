@@ -11,6 +11,8 @@ services:
     volumes:
       - /app/node_modules
       - ./Digital-Broker:/app
+    depends_on:
+      - stocks
   stocks:
     build: ./StockWatcher
     container_name: backend_dev

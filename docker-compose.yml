@@ -4,8 +4,10 @@ services:
     build: ./Digital-Broker
     ports:
       - "4001:3000"
+    depends_on:
+      - stocks
   stocks:
     build: ./StockWatcher
-    ports: 
+    ports:
       - "5001:5001"
-    
+
